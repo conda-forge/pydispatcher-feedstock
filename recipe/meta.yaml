@@ -1,6 +1,6 @@
 {% set name = "PyDispatcher" %}
-{% set version = "2.0.5" %}
-{% set sha256 = "5570069e1b1769af1fe481de6dd1d3a388492acddd2cdad7a3bde145615d5caf" %}
+{% set version = "2.0.6" %}
+{% set sha256 = "3d7e4f43c70000a1dca31f92694e99d0101934fa6eab5d5455a758858d86df95" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,8 @@ source:
 
 build:
   noarch: python
-  number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -33,7 +33,7 @@ about:
   license: BSD 3-Clause
   license_family: BSD
   license_file: license.txt
-  summary: 'Multi-producer-multi-consumer signal dispatching mechanism'
+  summary: Multi-producer-multi-consumer signal dispatching mechanism
 
   description: |
     Multi-producer-multi-consumer signal dispatching mechanism
