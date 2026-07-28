@@ -1,29 +1,26 @@
 schema_version: 1
 
 context:
-  name: PyDispatcher
   version: "2.0.7"
-  sha256: b777c6ad080dc1bad74a4c29d6a46914fa6701ac70f94b0d66fbcfde62f5be31
 
 package:
-  name: ${{ name|lower }}
+  name: pydispatcher
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: ${{ sha256 }}
-  file_name: ${{ name }}-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/p/pydispatcher/PyDispatcher-${{ version }}.tar.gz
+  sha256: b777c6ad080dc1bad74a4c29d6a46914fa6701ac70f94b0d66fbcfde62f5be31
 
 build:
   number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . --no-deps -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
     - python ${{ python_min }}.*
-    - setuptools
+    - setuptools >=40.8.0
   run:
     - python >=${{ python_min }}
 
@@ -31,7 +28,7 @@ tests:
   - python:
       imports:
         - pydispatch
-      pip_check: false
+      pip_check: true
       python_version:
         - ${{ python_min }}.*
         - "*"
@@ -42,9 +39,9 @@ about:
   summary: Multi-producer-multi-consumer signal dispatching mechanism
   description: |
     Multi-producer-multi-consumer signal dispatching mechanism
-  homepage: http://pydispatcher.sourceforge.net
-  repository: http://pydispatcher.sourceforge.net/
-  documentation: http://pydispatcher.sourceforge.net/
+  homepage: https://pydispatcher.sourceforge.net/
+  repository: https://github.com/mcfletch/pydispatcher/
+  documentation: https://pydispatcher.sourceforge.net/
 
 extra:
   recipe-maintainers:
